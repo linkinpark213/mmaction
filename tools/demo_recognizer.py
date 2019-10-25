@@ -61,6 +61,7 @@ def parse_args():
 def main():
     args = parse_args()
 
+    print(args.video_path)
     cap = cv2.VideoCapture(args.video_path)
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -71,6 +72,7 @@ def main():
     ret = True
 
     while (fc < frame_count and ret):
+        print('Frame #', fc)
         ret, buf[fc] = cap.read()
         fc += 1
 
