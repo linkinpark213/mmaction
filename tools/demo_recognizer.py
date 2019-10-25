@@ -64,6 +64,7 @@ def main():
     print(args.video_path)
     cap = cv2.VideoCapture(args.video_path)
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    print('Video length: ', frame_count)
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     buf = np.empty((frame_count, frame_height, frame_width, 3), np.dtype('uint8'))
