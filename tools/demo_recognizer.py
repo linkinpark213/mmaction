@@ -18,7 +18,7 @@ def single_test(model, data_loader):
     dataset = data_loader.dataset
     # prog_bar = mmcv.ProgressBar(len(dataset))
     for i, data in enumerate(data_loader):
-        # print(data['img_group_0'].shape)
+        print('Outer:', type(data['img_group_0']))
         with torch.no_grad():
             result = model(return_loss=False, **data)
         results.append(result)
