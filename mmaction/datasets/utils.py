@@ -289,6 +289,30 @@ def parse_ucf101_splits(level):
     return splits
 
 
+def parse_hmdb51_splits(level):
+    class_ind = [x.strip().split()
+                 for x in open('data/hmdb51/annotations/classInd.txt')]
+    class_mapping = {x[1]: int(x[0]) - 1 for x in class_ind}
+
+    def line2rec(line):
+        items = line.strip().split(' ')
+        vid = items[0].split('.')[0]
+        vid = '/'.join(vid.split('/')[-level:])
+        label = class_mapping[items[0].split('/')[0]]
+        return vid, label
+
+    splits = []
+    for i in range(1, 2):
+        train_list = [line2rec(x) for x in open(
+            'data/hmdb51/annotations/trainlist{:02d}.txt'.format(i))]
+        test_list = [line2rec(x) for x in open(
+            'data/hmdb51/annotations/testlist{:02d}.txt'.format(i))]
+        splits.append((train_list, test_list))
+    return splits
+
+
+
+
 def parse_kinetics_splits(level):
     csv_reader = csv.reader(
         open('data/kinetics400/annotations/kinetics_train.csv'))

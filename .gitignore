@@ -108,3 +108,6 @@ mmaction/version.py
 data
 .vscode
 .idea
+modelzoo
+work_dirs
+mmaction.egg-info
