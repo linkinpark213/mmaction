@@ -13,8 +13,8 @@ from mmaction.core.evaluation.accuracy import (softmax, top_k_accuracy,
                                                mean_class_accuracy)
 
 
-def inference(model, image):
-    result = model([1], None, return_loss=False, img_group_0=image)
+def inference(model, images):
+    result = model([1], None, return_loss=False, img_group_0=torch.Tensor(images))
     return result
 
 
