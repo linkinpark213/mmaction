@@ -67,12 +67,12 @@ def main():
     print('Video length: ', frame_count)
     frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    buf = np.empty((frame_count, frame_height, frame_width, 3), np.dtype('uint8'))
+    buf = np.empty((frame_count - 1, frame_height, frame_width, 3), np.dtype('uint8'))
 
     fc = 0
     ret = True
 
-    while (fc < frame_count and ret):
+    while (fc < frame_count - 1 and ret):
         print('Frame #', fc)
         ret, buf[fc] = cap.read()
         fc += 1
