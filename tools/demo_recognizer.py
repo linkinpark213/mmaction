@@ -13,8 +13,9 @@ from mmaction.core.evaluation.accuracy import (softmax, top_k_accuracy,
 
 
 def inference(model, image):
-    result = model(1, None, image)
+    result = model([1], None, return_loss=False, img_group_0=image)
     return result
+
 
 def single_test(model, data_loader):
     model.eval()
