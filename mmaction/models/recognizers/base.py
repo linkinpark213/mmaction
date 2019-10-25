@@ -38,4 +38,5 @@ class BaseRecognizer(nn.Module):
         if return_loss:
             return self.forward_train(num_modalities, img_meta, **kwargs)
         else:
+            print(type(kwargs['img_group_0']))
             return self.forward_test(num_modalities, img_meta, **kwargs)
