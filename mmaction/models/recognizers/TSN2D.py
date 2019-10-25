@@ -137,6 +137,8 @@ class TSN2D(BaseRecognizer):
         assert num_modalities == 1
         img_group = kwargs['img_group_0']
 
+        print(img_group.shape)
+
         bs = img_group.shape[0]
         img_group = img_group.reshape(
             (-1, self.in_channels) + img_group.shape[3:])
