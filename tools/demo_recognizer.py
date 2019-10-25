@@ -16,7 +16,7 @@ def single_test(model, data_loader):
     model.eval()
     results = []
     dataset = data_loader.dataset
-    prog_bar = mmcv.ProgressBar(len(dataset))
+    # prog_bar = mmcv.ProgressBar(len(dataset))
     for i, data in enumerate(data_loader):
         print(data.keys())
         with torch.no_grad():
@@ -24,8 +24,8 @@ def single_test(model, data_loader):
         results.append(result)
 
         batch_size = data['img_group_0'].data[0].size(0)
-        for _ in range(batch_size):
-            prog_bar.update()
+        # for _ in range(batch_size):
+        #     prog_bar.update()
     return results
 
 
