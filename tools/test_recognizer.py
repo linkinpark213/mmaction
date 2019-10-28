@@ -25,7 +25,7 @@ def single_test(model, data_loader):
     for i, data in enumerate(data_loader):
         with torch.no_grad():
             # result = model(return_loss=False, **data)
-            result = inference(model, data['img_group_0'])
+            result = inference(model, data['img_group_0'].data())
         results.append(result)
 
         # batch_size = data['img_group_0'].data[0].size(0)
