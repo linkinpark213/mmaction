@@ -83,6 +83,7 @@ def main():
     buf = buf.astype(np.int8)
     buf = buf.transpose((0, 3, 1, 2))
     buf = np.expand_dims(buf, 0)
+    buf = buf.astype(np.float32) - 128
 
     cfg = mmcv.Config.fromfile(args.config)
     # set cudnn_benchmark
