@@ -124,7 +124,7 @@ work_dir = './work_dirs/tsn_2d_rgb_bninception_seg_3_f1s1_b32_g8'
 load_from = './work_dirs/tsn_2d_rgb_bninception_seg_3_f1s1_b32_g8/latest.pth'
 resume_from = None
 class_names = [
-    'brush_hair,'
+    'brush_hair',
     'cartwheel',
     'catch',
     'chew',
