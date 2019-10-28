@@ -74,7 +74,7 @@ def main():
 
     while (fc < frame_count - 1 and ret):
         print('Frame #', fc)
-        ret, buf[fc] = cap.read()
+        ret, buf[fc] = cv2.resize(cap.read(), (224, 224))
         fc += 1
 
     cap.release()
