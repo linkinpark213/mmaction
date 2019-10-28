@@ -80,7 +80,6 @@ def main():
 
     cap.release()
 
-    buf = buf.astype(np.int8)
     buf = buf.transpose((0, 3, 1, 2))
     buf = np.expand_dims(buf, 0)
     buf = buf.astype(np.float32) - 128
