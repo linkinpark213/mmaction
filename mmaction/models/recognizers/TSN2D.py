@@ -155,4 +155,4 @@ class TSN2D(BaseRecognizer):
         if self.with_cls_head:
             x = self.cls_head(x)
 
-        return x.cpu().numpy()
+        return x.detach().cpu().numpy()
