@@ -28,7 +28,7 @@ test_cfg = None
 dataset_type = 'RawFramesDataset'
 data_root = 'data/hmdb51/rawframes'
 img_norm_cfg = dict(
-   mean=[104, 117, 128], std=[1, 1, 1], to_rgb=False)
+    mean=[104, 117, 128], std=[1, 1, 1], to_rgb=False)
 
 data = dict(
     videos_per_gpu=32,
@@ -123,6 +123,56 @@ log_level = 'INFO'
 work_dir = './work_dirs/tsn_2d_rgb_bninception_seg_3_f1s1_b32_g8'
 load_from = './work_dirs/tsn_2d_rgb_bninception_seg_3_f1s1_b32_g8/latest.pth'
 resume_from = None
-
-
-
+class_names = [
+    'brush_hair,'
+    'cartwheel',
+    'catch',
+    'chew',
+    'clap',
+    'climb',
+    'climb_stairs',
+    'dive',
+    'draw_sword',
+    'dribble',
+    'drink',
+    'eat',
+    'fall_floor',
+    'fencing',
+    'flic_flac',
+    'golf',
+    'handstand',
+    'hit',
+    'hug',
+    'jump',
+    'kick',
+    'kick_ball',
+    'kiss',
+    'laugh',
+    'pick',
+    'pour',
+    'pullup',
+    'punch',
+    'push',
+    'pushup',
+    'ride_bike',
+    'ride_horse',
+    'run',
+    'shake_hands',
+    'shoot_ball',
+    'shoot_bow',
+    'shoot_gun',
+    'sit',
+    'situp',
+    'smile',
+    'smoke',
+    'somersault',
+    'stand',
+    'swing_baseball',
+    'sword',
+    'sword_exercise',
+    'talk',
+    'throw',
+    'turn',
+    'walk',
+    'wave:'
+]

@@ -101,8 +101,11 @@ def main():
     model.eval()
     outputs = inference(model, buf)
 
-    print(outputs)
-    print(np.argmax(outputs, axis=1))
+    pred = print(np.argmax(outputs, axis=1))
+    if hasattr(cfg, 'class_names'):
+        print(cfg.class_names[pred])
+    else:
+        print('Class #', pred)
 
 
 if __name__ == '__main__':
