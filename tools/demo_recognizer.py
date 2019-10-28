@@ -101,7 +101,7 @@ def main():
     model.eval()
     outputs = inference(model, buf)
 
-    pred = print(np.argmax(outputs, axis=1))
+    pred = np.argmax(outputs, axis=1)[0]
     if hasattr(cfg, 'class_names'):
         print(cfg.class_names[pred])
     else:
