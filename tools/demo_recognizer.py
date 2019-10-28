@@ -74,6 +74,7 @@ def main():
 
     while (fc < frame_count - 1 and ret):
         ret, frame = cap.read()
+        print(frame)
         buf[fc] = cv2.resize(frame, (224, 224))
         fc += 1
     print('Video loaded')
