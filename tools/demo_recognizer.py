@@ -98,6 +98,7 @@ def main():
         cfg.model, train_cfg=None, test_cfg=cfg.test_cfg)
     load_checkpoint(model, args.checkpoint, strict=True)
 
+    model.eval()
     outputs = inference(model, buf)
 
     print(outputs)
