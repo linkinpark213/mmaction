@@ -73,10 +73,10 @@ def main():
     ret = True
 
     while (fc < frame_count - 1 and ret):
-        print('Frame #', fc)
         ret, frame = cap.read()
         buf[fc] = cv2.resize(frame, (224, 224))
         fc += 1
+    print('Video loaded')
 
     cap.release()
 
@@ -100,6 +100,7 @@ def main():
     outputs = inference(model, buf)
 
     print(outputs)
+    print(np.argmax(outputs, axis=1))
 
 
 if __name__ == '__main__':
