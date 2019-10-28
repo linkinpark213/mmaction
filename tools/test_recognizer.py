@@ -12,20 +12,42 @@ from mmaction.core.evaluation.accuracy import (softmax, top_k_accuracy,
                                                mean_class_accuracy)
 
 
+def inference(model, images):
+    result = model([1], None, return_loss=False, img_group_0=torch.Tensor(images))
+    return result
+
+
 def single_test(model, data_loader):
     model.eval()
     results = []
     dataset = data_loader.dataset
-    prog_bar = mmcv.ProgressBar(len(dataset))
+    # prog_bar = mmcv.ProgressBar(len(dataset))
     for i, data in enumerate(data_loader):
         with torch.no_grad():
-            result = model(return_loss=False, **data)
+            # result = model(return_loss=False, **data)
+            result = inference(model, data['img_group_0'])
         results.append(result)
 
-        batch_size = data['img_group_0'].data[0].size(0)
-        for _ in range(batch_size):
-            prog_bar.update()
+        # batch_size = data['img_group_0'].data[0].size(0)
+        # for _ in range(batch_size):
+        #     prog_bar.update()
     return results
+
+
+# def single_test(model, data_loader):
+#     model.eval()
+#     results = []
+#     dataset = data_loader.dataset
+#     prog_bar = mmcv.ProgressBar(len(dataset))
+#     for i, data in enumerate(data_loader):
+#         with torch.no_grad():
+#             result = model(return_loss=False, **data)
+#         results.append(result)
+#
+#         batch_size = data['img_group_0'].data[0].size(0)
+#         for _ in range(batch_size):
+#             prog_bar.update()
+#     return results
 
 
 def _data_func(data, device_id):
