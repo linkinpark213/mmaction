@@ -28,7 +28,7 @@ def fill_gaps(track, target_id):
 def smooth(data, window_size):
     window = np.ones(int(window_size)) / float(window_size)
     smoothed = np.array([np.convolve(data[:, i], window) for i in range(2, 6)]).transpose((1, 0))[
-        int(window_size / 2): int(-window_size / 2), :]
+               int(window_size / 2): int(-window_size / 2), :]
     data = np.concatenate((data[:, 0:1], data[:, 1:2], smoothed), axis=1)
     return data
 
@@ -48,7 +48,8 @@ def crop(img, x_c, y_c, window_size):
     if y_c > img.shape[0] - window_size / 2:
         padded_img = cv2.copyMakeBorder(img, 0, window_size / 2, 0, 0, borderType=cv2.BORDER_REFLECT)
 
-    return padded_img[y_base + y_c, x_base + x_c, :]
+    return padded_img[int(y_base + y_c - window_size / 2), int(y_base + y_c + window_size / 2),
+           int(x_base + x_c - window_size / 2): int(x_base + x_c + window_size / 2), :]
 
 
 if __name__ == '__main__':
