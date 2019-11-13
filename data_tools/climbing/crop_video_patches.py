@@ -89,8 +89,7 @@ if __name__ == '__main__':
             box = detection[2:6]
             x_c, y_c = (detection[2] + detection[4]) / 2, (detection[3] + detection[5]) / 2
             w, h = detection[4] - detection[2], detection[5] - detection[3]
-            print(os.path.join(args.rawframes_dir, video_name, '{}.png'.format(detection[0])))
-            img = cv2.imread(os.path.join(args.rawframes_dir, video_name, '{}.png'.format(detection[0])))
+            img = cv2.imread(os.path.join(args.rawframes_dir, video_name, '{}.png'.format(int(detection[0]))))
             patch = crop(img, x_c, y_c, max(w, h))
 
             patch = cv2.resize(patch, (args.video_size, args.video_size))
