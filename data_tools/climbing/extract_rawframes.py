@@ -52,7 +52,7 @@ def extract_rawframes(video_path, frame_ranges):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description='Raw frame extractor')
     parser.add_argument('annotation_file', type=str, help='Path to the annotation file')
     parser.add_argument('videos_dir', type=str, help='Path to the video files')
     args = parser.parse_args()
