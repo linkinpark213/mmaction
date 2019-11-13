@@ -27,7 +27,9 @@ def fill_gaps(track, target_id):
 
 def smooth(data, window_size):
     window = np.ones(int(window_size)) / float(window_size)
-    data = np.array([np.convolve(data[:, i], window) for i in range(len(data[0]))])
+    smoothed = np.array([np.convolve(data[:, i], window) for i in range(2, 6)]).transpose((1, 0))[
+        int(window_size / 2): int(-window_size / 2), :]
+    data = np.concatenate((data[:, 0:1], data[:, 1:2], smoothed), axis=1)
     return data
 
 
