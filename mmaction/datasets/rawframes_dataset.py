@@ -22,6 +22,7 @@ class RawFramesRecord(object):
 
     @property
     def label(self):
+        print(self._data)
         return int(self._data[2])
 
 
