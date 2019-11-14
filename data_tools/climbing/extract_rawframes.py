@@ -81,8 +81,11 @@ if __name__ == '__main__':
 
     # Extract last video
     if current_video_name is not None:
+        logging.info('Frame ranges before merging:')
+        for frame_range in frame_ranges:
+            logging.info('({}, {})'.format(frame_range[0], frame_range[1]))
         frame_ranges = range_overlap_adjust(frame_ranges)
-        logging.info('Frame ranges:')
+        logging.info('Frame ranges after merging:')
         for frame_range in frame_ranges:
             logging.info('({}, {})'.format(frame_range[0], frame_range[1]))
         extract_rawframes(os.path.join(args.videos_dir, current_video_name + '.mp4'), frame_ranges)
