@@ -11,7 +11,7 @@ def range_overlap_adjust(list_ranges):
         if overlap_corrected and start - 1 <= overlap_corrected[-1][1] and stop >= overlap_corrected[-1][1]:
             overlap_corrected[-1] = min(overlap_corrected[-1][0], start), stop
         elif overlap_corrected and start <= overlap_corrected[-1][1] and stop <= overlap_corrected[-1][1]:
-            break
+            continue
         else:
             overlap_corrected.append((start, stop))
     return overlap_corrected
