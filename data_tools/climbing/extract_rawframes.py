@@ -34,6 +34,7 @@ def extract_rawframes(video_path, frame_ranges):
         while True:
             n += 1
             if range_pointer == len(start_milestones):
+                logging.info('No more targets to crop')
                 break
             if n == start_milestones[range_pointer]:
                 logging.info('Starting writing at frame #{}'.format(start_milestones[range_pointer]))
@@ -45,6 +46,7 @@ def extract_rawframes(video_path, frame_ranges):
             pbar.update(1)
             ret, frame = capture.read()
             if not ret:
+                logging.info('Capture ended')
                 break
             if write:
                 cv2.imwrite('{}/{}.png'.format(rawframes_dir, n), frame)
