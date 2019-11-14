@@ -5,13 +5,14 @@ from mmaction.datasets.utils import (parse_directory,
                                      parse_ucf101_splits,
                                      parse_hmdb51_splits,
                                      parse_kinetics_splits,
+                                     parse_climbing_splits,
                                      build_split_list)
 
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Build file list')
     parser.add_argument('dataset', type=str, choices=[
-                        'ucf101', 'kinetics400', 'hmdb51'])
+        'ucf101', 'kinetics400', 'hmdb51', 'climbing'])
     parser.add_argument('frame_path', type=str,
                         help='root directory for the frames')
     parser.add_argument('--rgb_prefix', type=str, default='img_')
@@ -34,9 +35,11 @@ def main():
     args = parse_args()
 
     if args.level == 2:
-        def key_func(x): return '/'.join(x.split('/')[-2:])
+        def key_func(x):
+            return '/'.join(x.split('/')[-2:])
     else:
-        def key_func(x): return x.split('/')[-1]
+        def key_func(x):
+            return x.split('/')[-1]
 
     if args.format == 'rawframes':
         frame_info = parse_directory(args.frame_path,
@@ -59,6 +62,8 @@ def main():
         split_tp = parse_kinetics_splits(args.level)
     elif args.dataset == 'hmdb51':
         split_tp = parse_hmdb51_splits(args.level)
+    elif args.dataset == 'climbing':
+        split_tp = parse_climbing_splits(args.level)
     assert len(split_tp) == args.num_split
 
     out_path = args.out_list_path + args.dataset
