@@ -37,19 +37,20 @@ def crop(img, x_c, y_c, window_size):
     x_base = 0
     y_base = 0
     padded_img = img
-    if x_c < window_size / 2:
-        padded_img = cv2.copyMakeBorder(img, 0, 0, window_size / 2, 0, borderType=cv2.BORDER_REFLECT)
-        x_base = window_size / 2
-    if x_c > img.shape[1] - window_size / 2:
-        padded_img = cv2.copyMakeBorder(img, 0, 0, 0, window_size / 2, borderType=cv2.BORDER_REFLECT)
-    if y_c < window_size / 2:
-        padded_img = cv2.copyMakeBorder(img, window_size / 2, 0, 0, 0, borderType=cv2.BORDER_REFLECT)
-        y_base = window_size / 2
-    if y_c > img.shape[0] - window_size / 2:
-        padded_img = cv2.copyMakeBorder(img, 0, window_size / 2, 0, 0, borderType=cv2.BORDER_REFLECT)
+    half_window = window_size // 2
+    if x_c < half_window:
+        padded_img = cv2.copyMakeBorder(img, 0, 0, half_window, 0, borderType=cv2.BORDER_REFLECT)
+        x_base = half_window
+    if x_c > img.shape[1] - half_window:
+        padded_img = cv2.copyMakeBorder(img, 0, 0, 0, half_window, borderType=cv2.BORDER_REFLECT)
+    if y_c < half_window:
+        padded_img = cv2.copyMakeBorder(img, half_window, 0, 0, 0, borderType=cv2.BORDER_REFLECT)
+        y_base = half_window
+    if y_c > img.shape[0] - half_window:
+        padded_img = cv2.copyMakeBorder(img, 0, half_window, 0, 0, borderType=cv2.BORDER_REFLECT)
 
-    return padded_img[int(y_base + y_c - window_size / 2): int(y_base + y_c + window_size / 2),
-           int(x_base + x_c - window_size / 2): int(x_base + x_c + window_size / 2), :]
+    return padded_img[int(y_base + y_c - half_window): int(y_base + y_c + half_window),
+           int(x_base + x_c - half_window): int(x_base + x_c + half_window), :]
 
 
 if __name__ == '__main__':
