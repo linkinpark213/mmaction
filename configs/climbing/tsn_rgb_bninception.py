@@ -21,7 +21,7 @@ model = dict(
         dropout_ratio=0.8,
         in_channels=1024,
         init_std=0.001,
-        num_classes=51))
+        num_classes=2))
 train_cfg = None
 test_cfg = None
 # dataset settings
