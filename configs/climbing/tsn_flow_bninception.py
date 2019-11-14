@@ -22,7 +22,7 @@ model = dict(
         spatial_feature_size=1,
         dropout_ratio=0.7,
         in_channels=1024,
-        num_classes=101))
+        num_classes=2))
 train_cfg = None
 test_cfg = None
 # dataset settings
