@@ -37,7 +37,7 @@ def crop(img, x_c, y_c, window_size):
     x_base = 0
     y_base = 0
     padded_img = img
-    half_window = window_size // 2
+    half_window = int(window_size // 2)
     if x_c < half_window:
         padded_img = cv2.copyMakeBorder(img, 0, 0, half_window, 0, borderType=cv2.BORDER_REFLECT)
         x_base = half_window
